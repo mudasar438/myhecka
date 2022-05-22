@@ -1,8 +1,30 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import app from '../firebase/fireconfig'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate()
+  const auth = getAuth();
+
+  const handleLogin = (e)=>{
+    e.preventDefault()
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log("you are login")
+       navigate('/')
+
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+
+  }
   const signup = ()=>{
     console.log("You are clickingo")
     navigate('/register')
@@ -15,7 +37,8 @@ const Login = () => {
         <div className="w-[35%] mx-auto text-white font-sans font-bold bg-black min-h-screen pl-7">
             <div className=" min-h-screen items-center justify-items-start">
                 <div className=" row-start-2 text-4xl">
-                    Sign In                    
+                    Sign In      
+                    <form action="" onSubmit={handleLogin}>             
                     <div className="pt-10 pr-20">                        
                         <label className="text-sm font-sans font-medium">
                             Username
@@ -40,11 +63,12 @@ const Login = () => {
                 
                     <div className="text-sm font-sans font-medium w-full pr-20 pt-14">
                         <button 
-                            type="button"   
+                            type="submit"   
                             className="text-center w-full py-4 bg-blue-700 hover:bg-blue-400 rounded-md text-white ">
                                 SIGN IN
                         </button>
                     </div>
+                    </form> 
                 </div>
                 
                 <button className="text-sm font-sans font-medium text-gray-400 underline p-3 mt-5" onClick={signup}>

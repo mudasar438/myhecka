@@ -1,28 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import app from '../firebase/fireconfig'
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged ,signInWithEmailAndPassword} from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate()
   const auth = getAuth();
+  const [email, setEmail]= useState('')
+  const [password, setPassword]= useState('')
 
   const handleLogin = (e)=>{
     e.preventDefault()
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        console.log("you are login")
-       navigate('/')
+    const auth = getAuth();
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    navigate('/')
+    // Signed in 
+    alert("You are login")
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+    // onAuthStateChanged(auth, (user) => {
+    //   if (user) {
+    //     // User is signed in, see docs for a list of available properties
+    //     // https://firebase.google.com/docs/reference/js/firebase.User
+    //     const uid = user.uid;
+    //     console.log("you are login")
+    //    navigate('/')
 
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
+    //     // ...
+    //   } else {
+    //     // User is signed out
+    //     // ...
+    //   }
+    // });
 
   }
   const signup = ()=>{
@@ -46,6 +61,7 @@ const Login = () => {
                         <input 
                             type="text" 
                             name="username" 
+                            onChange={(e)=>setEmail(e.target.value)}
                             placeholder="Write your username" 
                             className="w-full bg-black py-3 px-12 border hover: border-gray-500 rounded shadow text-base font-sans"/>                            
                     </div>
@@ -56,6 +72,7 @@ const Login = () => {
                         <input 
                             type="password" 
                             name="password" 
+                            onChange={(e)=>setPassword(e.target.value)}
                             placeholder="Write your password" 
                             className=" w-full bg-black py-3 px-12 border hover: border-gray-500 rounded shadow text-base font-sans"/>
                         

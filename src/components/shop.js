@@ -124,8 +124,8 @@ const Shop = () => {
               <div className="flex flex-col items-center justify-between xl:flex-row">
                 <div className="w-full max-w-xl mb-12 xl:pr-16 xl:mb-0 xl:w-7/12">
                   <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-                    The quick, brown fox <br className="hidden md:block" />
-                    jumps over a{' '}
+                  Whether you’re just getting started  <br className="hidden md:block" />
+                  {' '}
                     <span className="text-teal-accent-400">lazy dog</span>
                   </h2>
                   <p className="max-w-xl mb-4 text-base text-gray-400 md:text-lg">
@@ -137,7 +137,7 @@ const Shop = () => {
                
               </div>
             </div>
-            <h1>Helllo </h1>
+          
            
 
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -346,7 +346,7 @@ const Shop = () => {
         </div>
       </div>
     </div>
-    hello
+  
     <section class="bg-white dark:bg-gray-900 ">
         <div class="container px-6 py-8 mx-auto">
             <div class="lg:flex lg:-mx-2 ">

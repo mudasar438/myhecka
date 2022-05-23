@@ -13,6 +13,7 @@ import { collection ,  addDoc, getDocs, doc ,updateDoc, deleteDoc} from 'firebas
 import { useState } from 'react'
 import { setPersistence } from 'firebase/auth'
 import { useRef } from 'react'
+import { async } from '@firebase/util';
 
 const Adman = () => {
   
@@ -26,13 +27,13 @@ const Adman = () => {
   console.log(price)
   // set data into Firbase database 
   const inputEl = useRef(null);
-const getData = (e)=>{
-  e.preventDefault()
+const getData = (link)=>{
   addDoc(databaseRef, {
     name:name,
     size:size,
     price:price,
     detail:detail,
+    image:link
 
   })
  
@@ -52,7 +53,8 @@ const storage = getStorage();
 const metadata = {
   contentType: "image/jpeg",
 };
-const uplode = () => {
+const uplode = (e) => {
+  e.preventDefault()
 
 
   var file = inputEl.current.files[0];
@@ -64,10 +66,7 @@ const uplode = () => {
     (snapshot) => {
       const progress =
         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      let n = progress.toFixed(1);
-      // setValue(n);
-      // setShow()
-      console.log("Upload is " + progress + "% done");
+      
       switch (snapshot.state) {
         case "paused":
           console.log("Upload is paused");
@@ -75,20 +74,27 @@ const uplode = () => {
         case "running":
           console.log("Upload is running");
           break;
+         
       }
     },
     (error) => {
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
       switch (error.code) {
-        case "storage/unauthorized":
+        case 'storage/unauthorized':
+        break;
+        case 'storage/canceled':
           break;
-        case "storage/canceled":
-          break;
-
-        // ...
-
-        case "storage/unknown":
-          break;
+        case 'storage/unknown':
+         break;
       }
+    }, 
+     () => {
+   
+      getDownloadURL(uploadTask.snapshot.ref).then ((downloadURL) =>{
+        getData(downloadURL)
+        console.log('File available at which is uplode i', downloadURL);
+      });
     }
   );
 };

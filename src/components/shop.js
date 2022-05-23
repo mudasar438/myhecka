@@ -1,7 +1,122 @@
-import React from 'react'
+import React, { useState } from 'react'
 import shoping from '../imgs/b18.jpg'
+import {app, database} from '../firebase/fireconfig'
+
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  getMetadata,
+  listAll,
+  connectStorageEmulator,
+} from "firebase/storage";
+import { collection ,  addDoc, getDocs, doc ,updateDoc, deleteDoc, onSnapshot} from 'firebase/firestore'
 
 const Shop = () => {
+
+  const array = [1,2,3,4,5,6,7,8,9]
+  const name = ["mudassar", "ali","usman","ahamad","anis"]
+  const [display , setDisplay]= useState([])
+  const storage = getStorage();
+  const databaseRef = collection(database, "CRUD DATA")
+  const [real, setReal] = useState([])
+  const [firedata, setFireData] = useState([])
+
+  const showlaplop = ()=>{
+   
+      const forestRef = ref(storage, "images");
+      // const   storage =  getStorage();
+      listAll(forestRef)
+        .then((res) => {
+          res.prefixes.map((folderRef) => {});
+          // console.log(res.items,'items')
+          Promise.all(
+            res.items.map((item) => {
+              return getDownloadURL(item);
+            })
+          )
+            .then((items) => {
+              console.log(items, "items");
+              setDisplay(items);
+              getData()
+           
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+          // getDownloadURL(res.items[0]).then(some=>{
+          //   console.log(some,"some")
+          // })
+          // .catch(error=>{
+          //   console.error(error)
+          // })
+          // setDisplay(res.items)
+        })
+        .catch((error) => {
+          // Uh-oh, an error occurred!
+        });
+  
+      // getMetadata(forestRef)
+      //   .then((metadata) => {
+      //     console.log(metadata)
+  
+      //   })
+      //   .catch((error) => {
+  
+      //   });
+    
+  }
+  console.log(firedata,"firedata")
+  // show laptop details 
+  const getData = async()=>{
+
+    await getDocs(databaseRef)
+  .then ((response)=>{
+    setFireData(response.docs.map((item)=>{
+      console.log(item.data(), item.id)
+      return (
+        
+          
+           {...item.data(), id:item.id}
+        
+
+       
+      )
+    }))
+    
+  })
+  
+  // onSnapshot(databaseRef, (data)=>{
+  //   // console.log(
+  //   //   data.docs.map((item)=>{
+  //   //         return (
+  //   //           {...item.data(), id:item.id}
+  
+  //   //         )
+  //   //       })
+  //   // )
+  //   setReal( data.docs.map((item)=>{
+  //     return (
+  //       {...item.data(), id:item.id}
+  
+  //     )
+  //   }))
+  // })
+  
+  
+  
+  
+  }
+  // firedata.map((item) =>{
+  //   return(
+  //     console.log(item.data.name)
+
+  //   )
+
+  // })
+  // console.log(firedata   + "data from fire")
+  
   return (
    <>
    <div className="overflow-hidden bg-gray-800">
@@ -21,9 +136,10 @@ const Shop = () => {
                 </div>
                
               </div>
-            </div>\
+            </div>
+            <h1>Helllo </h1>
            
-  
+
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="grid gap-5 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
         <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
@@ -230,22 +346,72 @@ const Shop = () => {
         </div>
       </div>
     </div>
-    <section class="bg-white dark:bg-gray-900">
+    hello
+    <section class="bg-white dark:bg-gray-900 ">
         <div class="container px-6 py-8 mx-auto">
-            <div class="lg:flex lg:-mx-2">
-                <div class="space-y-3 lg:w-1/5 lg:px-2 lg:space-y-4">
-                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Jackets & Coats</a>
-                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Hoodies</a>
-                    <a href="#" class="block font-medium text-blue-600 dark:text-blue-500 hover:underline">T-shirts & Vests</a>
-                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Shirts</a>
-                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Blazers & Suits</a>
-                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Jeans</a>
-                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Trousers</a>
-                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Shorts</a>
-                    <a href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Underwear</a>
+            <div class="lg:flex lg:-mx-2 ">
+                <div class="space-y-3 lg:w-1/5 lg:px-2 lg:space-y-4 ">
+                    <button href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline" onClick={showlaplop}>Labtops</button>
+                    <button href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Mobiles</button>
+                    <button href="#" class="block font-medium text-blue-600 dark:text-blue-500 hover:underline">Clothes</button>
+                    <button href="#" class="block font-medium text-gray-500 dark:text-gray-300 hover:underline">Jeans</button>
+                 
                 </div>
 
-                <div class="mt-6 lg:mt-0 lg:px-2 lg:w-4/5 ">
+                <div class="mt-6 lg:mt-0 lg:px-2 lg:w-4/5  ">
+                   
+                    {/* <button className='bg-green-600' onClick={getData}>Show data</button> */}
+
+
+                    <div className="grid grid-cols-3 mx-2 p-5 ">
+          {
+            firedata.map((item)=>{
+
+              return(
+                <div className='w-full p-1 md:p-2 my-12' key={item.id}>
+                  <ul className=""> 
+                    <li>
+              
+
+                      <img src={item.image} alt="" srcset=""  class="block object-cover object-center w-full h-full rounded-lg" />
+                     
+
+                      <h4 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-200">{item.name}</h4>
+                       <p class=""> Price {item.price}</p>
+                       <p className='text-blue-500'>{item.detail}</p>
+                        <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                       
+                      <span class="mx-1">Add to cart</span>
+                       </button> 
+                     
+                    
+                     
+                    </li>
+                    
+                    
+                    </ul>
+                </div>
+
+
+
+              )
+
+            })
+          }
+         
+        </div>
+
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white dark:bg-gray-900 pb-10">
+        
+         
+
+                <div class="mt-6 lg:mt-0 lg:px-2 lg:w-4/5 mx-auto ">
                     <div class="flex items-center justify-between text-sm tracking-widest uppercase ">
                         <p class="text-gray-500 dark:text-gray-300">6 Items</p>
                         <div class="flex items-center">
@@ -287,7 +453,7 @@ const Shop = () => {
 
                         <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
                             <img class="object-cover w-full rounded-md h-72 xl:h-80" src="https://images.unsplash.com/photo-1603320409990-02d834987237?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="T-Shirt"/>
-                            {/* <h4 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-200"/>T-shirt with a motif</h4> */}
+                            <h4 class="mt-2 text-lg font-medium text-gray-700 dark:text-gray-200">T-shirt with a motif</h4>
                             <p class="text-blue-500">$16.55</p>
 
                             <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
@@ -312,8 +478,8 @@ const Shop = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+         
+        
     </section>
 
           </div></>

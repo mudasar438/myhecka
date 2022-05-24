@@ -2,7 +2,10 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword   } from "firebase/auth";
-import app from '../firebase/fireconfig'
+import {app, database} from '../firebase/fireconfig'
+
+import { collection ,  addDoc, getDocs, doc ,updateDoc, deleteDoc} from 'firebase/firestore'
+
 
 
 const Register = () => {
@@ -11,8 +14,26 @@ const Register = () => {
     const [password, setPassword]=useState('')
     const auth = getAuth();
     const navigate = useNavigate()
+    const databaseRef = collection(database, "MY EMAIL PASSWORD")
 
-    
+
+    const [firstName, setFirstName] = useState("user")
+
+    const adminfun = ()=>{
+      setFirstName("admin")
+      alert("Registration for Admin ")
+   
+    }
+          console.log(firstName)
+              const userfun = ()=>{
+                  if(firstName == "admin"){
+            
+                    setFirstName("user")
+                    alert("Registration for User Account")
+                  }
+
+                }
+                console.log(firstName)
     const handleRegistration = (e)=>{
         e.preventDefault();
         // console.log(name,email,password)
@@ -20,15 +41,34 @@ const Register = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
+          // const getData = ()=>{
+            addDoc(databaseRef, {
+            uid: userCredential.user.uid,
+             role:firstName,
+
+            })
+           
+            .then(()=>{
+              alert("Email & password store in Firestore Database")
+              // getData()
+             
+             
+            })
+            .catch((err)=>{
+              console.error(err.message)
+            })
+          
+      
+      alert("You Are Register & Login")
+      navigate('/')
          
       
-          alert("You Are Register & Login")
-          navigate('/')
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+       
           // ..
         });
 
@@ -49,6 +89,29 @@ const Register = () => {
             <div className=" min-h-screen items-center justify-items-start">
                 <div className=" row-start-2 text-4xl">
                   Register  
+                  <div className="flex">
+
+               
+
+                  <div className="text-sm font-sans font-medium w-full pr-20 pt-14">
+                        <button 
+                            type="button"  
+                            onClick={userfun} 
+                            className="text-center w-full py-4 bg-blue-700 hover:bg-blue-400 rounded-md text-white ">
+                              User
+                        </button>
+                    </div>
+                    <div className="text-sm font-sans font-medium w-full pr-20 pt-14">
+                        <button 
+                            type="button"  
+                            onClick={adminfun} 
+                            className="text-center w-full py-4 bg-blue-700 hover:bg-blue-400 rounded-md text-white ">
+                              Administrator
+                        </button>
+                    </div>
+                    </div>
+
+
                   <form action="" onSubmit={handleRegistration}>
                   <div className="pt-10 pr-20">                        
                         <label className="text-sm font-sans font-medium">

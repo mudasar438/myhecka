@@ -8,6 +8,7 @@ import  Footer  from './components/footer';
 import Login from './components/login';
 import Shop from './components/shop';
 import Register from './components/register';
+import ShowsMobileData from './showDataUserSide/showMobileData';
 
 function App() {
   return (
@@ -17,11 +18,13 @@ function App() {
     
         
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/admin" element={<Adman />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
       <Route path="/shop" element={<Shop />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/showMobileData" element={<ShowsMobileData />} />
+      
      
     </Routes>
     </Router>

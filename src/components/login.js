@@ -1,28 +1,68 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import app from '../firebase/fireconfig'
+import {app, database} from '../firebase/fireconfig'
 import { getAuth, onAuthStateChanged ,signInWithEmailAndPassword} from "firebase/auth";
+import { collection ,  addDoc, getDocs, doc ,updateDoc, deleteDoc} from 'firebase/firestore'
 
 const Login = () => {
   const navigate = useNavigate()
   const auth = getAuth();
   const [email, setEmail]= useState('')
   const [password, setPassword]= useState('')
+  const databaseRef = collection(database, "MY EMAIL PASSWORD");
+  const [userAdmin, setUserAdmin]= useState([])
 
   const handleLogin = (e)=>{
     e.preventDefault()
     const auth = getAuth();
-signInWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    navigate('/')
     // Signed in 
-    alert("You are login")
     const user = userCredential.user;
+    console.log(user.uid + "from athentaction ")
+    //get user or admin it from database
+    getDocs(databaseRef)
+  .then ((response)=>{
+
+    // using 
+    setUserAdmin(response.docs.map((item)=>{
+      console.log(item.data().role, item.id )
+      const data  =item.data();
+
+      if(data.role==="admin"){
+        navigate('/admin')
+
+      }
+      else if (data.role=== "user"){
+        navigate("/home")
+      }
+
+      return (
+        
+          
+           {...item.data(), id:item.uid}
+        
+
+       
+      )
+    }))
+    
+  })
+
+    if(user.role==="user"){
+      navigate('/home')
+      
+      alert("You are login")
+    }
+    else if(user.rol==="admin"){
+      navigate('/admin')
+    }
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    alert("Worng Email or Password")
   });
     // onAuthStateChanged(auth, (user) => {
     //   if (user) {
@@ -46,6 +86,7 @@ signInWithEmailAndPassword(auth, email, password)
 
 
   }
+  
   return (
     <>
     <div className=' bg-black'>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Mobile from './mobile'
 import {app,database} from '../firebase/fireconfig'
 import "firebase/storage";
 import { collection ,  addDoc, getDocs, doc ,updateDoc, deleteDoc} from 'firebase/firestore'
@@ -205,247 +206,25 @@ const uplode = (e) => {
 							
 						</form>
 					</div>
-          
-          <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border border-red mx-5">
-						<h3 className="pt-4 text-2xl text-center">Mobiles</h3>
-						<form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
-							<div className="mb-4 md:flex md:justify-between">
-								<div className="mb-4 md:mr-2 md:mb-0">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-								Model
-									</label>
-									<input
-										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-								
-										type="text"
-										placeholder="Iphone 11"
-									/>
-								</div>
-								<div className="md:ml-2">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
-									Size
-									</label>
-									<input
-										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-									
-										type="text"
-										placeholder="344x654"
-									/>
-								</div>
-							</div>
-							<div className="mb-4">
-								<label className="block mb-2 text-sm font-bold text-gray-700" for="email">
-								price
-								</label>
-								<input
-									className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-							
-									type="text"
-									placeholder="969 $"
-								/>
-							</div>
-              <div className="mb-4 md:mr-2 md:mb-0">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-								Detail
-									</label>
-									<input
-										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-								
-										type="text"
-										placeholder="About Product"
-									/>
-								</div>
+          <Mobile />
 
-                <div className="mb-4 md:mr-2 md:mb-0">
-									<label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-						Uploding Image
-									</label>
-									<input 
-										className="w-full px-3  mt-5 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-								
-										type="file"
-										placeholder="About Product"
-									/>
-								</div>
-                
-                
-						
-							<div className="mb-6 text-center">
-								<button
-									className="w-full mt-5 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-									type="button"
-								>
-									Uplode
-								</button>
-							</div>
-							<hr className="mb-6 border-t" />
-							
-							
-						</form>
-					</div>
+
+          {/* // 2nd item */}
+          
+          
+      
 				</div>
 			</div>
       <div className=" px-6 my-12  ">
 			
       <div className="w-full  flex  justify-between wrap ">
       
+      <Mobile />
+      <Mobile />
         
+       
         
-        <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border border-red mx-5">
-          <h3 className="pt-4 text-2xl text-center">Shirts</h3>
-          <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
-            <div className="mb-4 md:flex md:justify-between">
-              <div className="mb-4 md:mr-2 md:mb-0">
-                <label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-               Designe
-                </label>
-                <input
-                  className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              
-                  type="text"
-                  placeholder="Polo"
-                />
-              </div>
-              <div className="md:ml-2">
-                <label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
-                Size
-                </label>
-                <input
-                  className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                
-                  type="text"
-                  placeholder="xl xxl "
-                />
-              </div>
-            </div>
-            <div className="mb-4">
-              <label className="block mb-2 text-sm font-bold text-gray-700" for="email">
-              price
-              </label>
-              <input
-                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            
-                type="text"
-                placeholder="769 $"
-              />
-            </div>
-            <div className="mb-4 md:mr-2 md:mb-0">
-                <label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-              Detail
-                </label>
-                <input
-                  className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              
-                  type="text"
-                  placeholder="About Product"
-                />
-              </div>
-
-              <div className="mb-4 md:mr-2 md:mb-0">
-                <label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-          Uploding Image
-                </label>
-                <input 
-                  className="w-full px-3  mt-5 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              
-                  type="file"
-                  placeholder="About Product"
-                />
-              </div>
-              
-              
-          
-            <div className="mb-6 text-center">
-              <button
-                className="w-full mt-5 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                type="button"
-              >
-                Uplode
-              </button>
-            </div>
-            <hr className="mb-6 border-t" />
-            
-            
-          </form>
-        </div>
-        
-        <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border border-red mx-5">
-          <h3 className="pt-4 text-2xl text-center">Jeans</h3>
-          <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
-            <div className="mb-4 md:flex md:justify-between">
-              <div className="mb-4 md:mr-2 md:mb-0">
-                <label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-              Designe
-                </label>
-                <input
-                  className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              
-                  type="text"
-                  placeholder="Nerrow"
-                />
-              </div>
-              <div className="md:ml-2">
-                <label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
-                Size
-                </label>
-                <input
-                  className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                
-                  type="text"
-                  placeholder="40"
-                />
-              </div>
-            </div>
-            <div className="mb-4">
-              <label className="block mb-2 text-sm font-bold text-gray-700" for="email">
-              price
-              </label>
-              <input
-                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            
-                type="text"
-                placeholder="969 $"
-              />
-            </div>
-            <div className="mb-4 md:mr-2 md:mb-0">
-                <label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-              Detail
-                </label>
-                <input
-                  className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              
-                  type="text"
-                  placeholder="About Product"
-                />
-              </div>
-
-              <div className="mb-4 md:mr-2 md:mb-0">
-                <label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-          Uploding Image
-                </label>
-                <input 
-                  className="w-full px-3  mt-5 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              
-                  type="file"
-                  placeholder="About Product"
-                />
-              </div>
-              
-              
-          
-            <div className="mb-6 text-center">
-              <button
-                className="w-full mt-5 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                type="button"
-              >
-                Uplode
-              </button>
-            </div>
-            <hr className="mb-6 border-t" />
-            
-            
-          </form>
-        </div>
+       
       </div>
     </div>
 		</div>

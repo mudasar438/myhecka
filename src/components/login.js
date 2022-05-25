@@ -19,7 +19,7 @@ const Login = () => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(user.uid + "from athentaction ")
+    // console.log(user.uid + "from athentaction ")
     //get user or admin it from database
     getDocs(databaseRef)
   .then ((response)=>{
@@ -27,15 +27,20 @@ const Login = () => {
     // using 
     setUserAdmin(response.docs.map((item)=>{
       console.log(item.data().role, item.id )
+      
       const data  =item.data();
 
-      if(data.role==="admin"){
-        navigate('/admin')
+      if(data.uid==user.uid){
+  console.log(data.uid,user.uid)
 
-      }
-      else if (data.role=== "user"){
-        navigate("/home")
-      }
+  if(data.role ==="admin"){
+    navigate('/admin')
+    
+  }
+  else if (data.role === "user"){
+    navigate("/showHome")
+  }
+}
 
       return (
         
@@ -49,14 +54,14 @@ const Login = () => {
     
   })
 
-    if(user.role==="user"){
-      navigate('/home')
+    // if(user.role==="user"){
+    //   navigate('/home')
       
-      alert("You are login")
-    }
-    else if(user.rol==="admin"){
-      navigate('/admin')
-    }
+    //   alert("You are login")
+    // }
+    // else if(user.rol==="admin"){
+    //   navigate('/admin')
+    // }
     // ...
   })
   .catch((error) => {

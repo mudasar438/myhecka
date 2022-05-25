@@ -2,6 +2,7 @@ import React from 'react'
 import Mobile from './mobile'
 import {app,database} from '../firebase/fireconfig'
 import "firebase/storage";
+import NavbarAdman from './navbarAdman';
 import { collection ,  addDoc, getDocs, doc ,updateDoc, deleteDoc} from 'firebase/firestore'
   import {
     getStorage,
@@ -25,7 +26,7 @@ const Adman = () => {
   const [size, setSize] = useState('')
   const [price, setPrice] = useState('')
   const [detail, setDetail]=useState('')
-  const [age, setAge] = useState(null)
+  const [pgrs, setPgrs] = useState('')
   const databaseRef = collection(database, "CRUD DATA")
   console.log(name)
   console.log(price)
@@ -43,7 +44,7 @@ const getData = (link)=>{
  
   .then(()=>{
     alert("Data add Into Firestore Database/Storage")
-    getData()
+  
    
    
   })
@@ -70,6 +71,10 @@ const uplode = (e) => {
     (snapshot) => {
       const progress =
         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      const n=  progress.toFixed(1)
+
+        setPgrs(n)
+        console.log(progress)
       
       switch (snapshot.state) {
         case "paused":
@@ -106,6 +111,10 @@ const uplode = (e) => {
 
 
   return (
+    <>
+  
+    
+      <NavbarAdman />
     <div className="container mx-auto ">
 			<div className=" px-6 my-12  ">
 			
@@ -185,12 +194,9 @@ const uplode = (e) => {
                     ref={inputEl}
 										placeholder="About Product"
 									/>
-                <button
-									className="w-full mt-5 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-									
-								>
-									Uplode
-								</button>
+                  <progress id="file" value={pgrs} max="100" className='bg-red w-full mt-2'> {pgrs}% </progress>
+                  <p>Uploding is {pgrs} %</p>
+               
 								</div>
                 
                 
@@ -200,8 +206,9 @@ const uplode = (e) => {
 									className="w-full mt-5 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
 									type="submit"
                   onClick={uplode}
+                 
 								>
-									Submit
+									Uplode
 								</button>
 							</div>
 							<hr className="mb-6 border-t" />
@@ -239,6 +246,7 @@ const uplode = (e) => {
       </div>
     </div>
 		</div>
+    </>
   )
 }
 

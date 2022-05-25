@@ -1,6 +1,8 @@
 import React from 'react'
 import { app, database } from "../firebase/fireconfig";
 import { useState } from 'react';
+import Navbar from '../components/navbar';
+import { Navigate, useNavigate } from 'react-router-dom';
 import {
     getStorage,
     ref,
@@ -22,6 +24,7 @@ import {
     } from "firebase/firestore";
     
     const ShowJeans = () => {
+      const Navigate = useNavigate()
     const mobileDatabaseRef = collection(database, "JEANS");
 
     const [mobileDesplay, setMobileDisplay] = useState([]);
@@ -67,9 +70,50 @@ import {
   // console.log(mobileDesplay)
   console.log(showMobileData);
   showMobile();
+
+  const gotoMobile =()=>{
+    Navigate('/showMobileData')
+  }
+  const gotoshop = ()=>{
+    Navigate('/shop')
+  }
+  const gotoClothes = ()=>{
+    Navigate('/showClothes')
+  }
   return (
   <>
   <div className="">
+  <Navbar/>
+  <div class="flex justify-around border-2 lg:w-1/3 mt-5 lg:px-2 lg:space-y-4  mx-auto">
+                <button
+                  href="#"
+                  class="block font-medium text-gray-500 dark:text-gray-300 mt-4 hover:underline"
+                  onClick={gotoshop}
+                >
+                  Labtops
+                </button>
+                <button
+                  href="#"
+                  class="block font-medium text-gray-500 dark:text-gray-300 mt-3 hover:underline"
+                  onClick={gotoMobile}
+                >
+                  Mobiles
+                </button>
+                <button
+                  href="#"
+                  onClick={gotoClothes}
+                  class="block font-medium text-gray-500 dark:text-gray-300  hover:underline"
+                >
+                  Clothes
+                </button>
+                {/* <button
+                  href="#"
+                  onClick={gotoJeans}
+                  class="block font-medium text-gray-500 dark:text-gray-300 hover:underline"
+                >
+                  Jeans
+                </button> */}
+              </div>
       
   <div className="grid grid-cols-4 mx-2 p-5 ">
                 {showMobileData.map((item) => {

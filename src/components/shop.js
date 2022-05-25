@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import shoping from "../imgs/b18.jpg";
 import { app, database } from "../firebase/fireconfig";
 import { useNavigated } from "react-router-dom";
+import Navbar from "./navbar";
 
 import {
   getStorage,
@@ -48,7 +49,7 @@ const Shop = () => {
           })
         )
           .then((items) => {
-            console.log(items, "items");
+            // console.log(items, "items");
             setDisplay(items);
             getData();
           })
@@ -72,6 +73,7 @@ const Shop = () => {
       );
     });
   };
+  showlaplop()
   // Show Mobiles images list from storage
   const gotoMobile =()=>{
     Navigate('/showMobileData')
@@ -86,245 +88,41 @@ const Shop = () => {
 
   return (
     <>
+     <Navbar /> 
       <div className="overflow-hidden bg-gray-800">
-        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="flex flex-col items-center justify-between xl:flex-row">
-            <div className="w-full max-w-xl mb-12 xl:pr-16 xl:mb-0 xl:w-7/12">
-              <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
+        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:py-20" >
+          <div className="flex flex-row items-center justify-between xl:flex-row mx-auto  ">
+            <div className= " w-full md:w-[40%] max-w-xl mb-12 xl:pr-16 xl:mb-0  text-center ">
+              <h2 className="max-w-lg mb-6  font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
                 Whether you’re just getting started{" "}
                 <br className="hidden md:block" />{" "}
-                <span className="text-teal-accent-400">lazy dog</span>
+           
               </h2>
               <p className="max-w-xl mb-4 text-base text-gray-400 md:text-lg">
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                 accusantium doloremque laudan, totam rem aperiam, eaque ipsa
                 quae.
               </p>
+            </div> 
+            <div className="w-[60%] ">
+              <img src={shoping} alt="" srcset="" />
             </div>
+
           </div>
         </div>
 
-        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="grid gap-5 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
-            <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-              <a href="/" aria-label="Article">
-                <img
-                  src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
-                  className="object-cover w-full h-64 rounded"
-                  alt=""
-                />
-              </a>
-              <div className="py-5">
-                <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-                  13 Jul 2020
-                </p>
-                <a
-                  href="/"
-                  aria-label="Article"
-                  className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-                >
-                  <p className="text-2xl font-bold leading-5">
-                    Diving to the deep
-                  </p>
-                </a>
-                <p className="mb-4 text-gray-700">
-                  Sed ut perspiciatis unde omnis iste natus error sit sed quia
-                  consequuntur magni voluptatem doloremque.
-                </p>
-                <div className="flex space-x-4">
-                  <a
-                    href="/"
-                    aria-label="Likes"
-                    className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-                  >
-                    <div className="mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                      >
-                        <polyline
-                          points="6 23 1 23 1 12 6 12"
-                          fill="none"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M6,12,9,1H9a3,3,0,0,1,3,3v6h7.5a3,3,0,0,1,2.965,3.456l-1.077,7A3,3,0,0,1,18.426,23H6Z"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
-                    </div>
-                    <p className="font-semibold">7.4K</p>
-                  </a>
-                  <a
-                    href="/"
-                    aria-label="Comments"
-                    className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-                  >
-                    <div className="mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        stroke="currentColor"
-                        className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                      >
-                        <polyline
-                          points="23 5 23 18 19 18 19 22 13 18 12 18"
-                          fill="none"
-                          strokeMiterlimit="10"
-                        />
-                        <polygon
-                          points="19 2 1 2 1 14 5 14 5 19 12 14 19 14 19 2"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
-                    </div>
-                    <p className="font-semibold">81</p>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-              <a href="/" aria-label="Article">
-                <img
-                  src="https://images.pexels.com/photos/1576937/pexels-photo-1576937.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500"
-                  className="object-cover w-full h-64 rounded"
-                  alt=""
-                />
-              </a>
-              <div className="py-5">
-                <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-                  4 Nov 2020
-                </p>
-                <a
-                  href="/"
-                  aria-label="Article"
-                  className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-                >
-                  <p className="text-2xl font-bold leading-5">
-                    Conquer the World
-                  </p>
-                </a>
-                <p className="mb-4 text-gray-700">
-                  Sed ut perspiciatis unde omnis iste natus error sit sed quia
-                  consequuntur magni voluptatem doloremque.
-                </p>
-                <div className="flex space-x-4">
-                  <a
-                    href="/"
-                    aria-label="Likes"
-                    className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-                  >
-                    <div className="mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                      >
-                        <polyline
-                          points="6 23 1 23 1 12 6 12"
-                          fill="none"
-                          strokeMiterlimit="10"
-                        />
-                        <path
-                          d="M6,12,9,1H9a3,3,0,0,1,3,3v6h7.5a3,3,0,0,1,2.965,3.456l-1.077,7A3,3,0,0,1,18.426,23H6Z"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
-                    </div>
-                    <p className="font-semibold">7.4K</p>
-                  </a>
-                  <a
-                    href="/"
-                    aria-label="Comments"
-                    className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-                  >
-                    <div className="mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        stroke="currentColor"
-                        className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                      >
-                        <polyline
-                          points="23 5 23 18 19 18 19 22 13 18 12 18"
-                          fill="none"
-                          strokeMiterlimit="10"
-                        />
-                        <polygon
-                          points="19 2 1 2 1 14 5 14 5 19 12 14 19 14 19 2"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeMiterlimit="10"
-                        />
-                      </svg>
-                    </div>
-                    <p className="font-semibold">81</p>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-              <a href="/" aria-label="Article">
-                <img
-                  src={shoping}
-                  className="object-cover w-full h-64 rounded"
-                  alt=""
-                />
-              </a>
-              <div className="py-5">
-                <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-                  28 Dec 2020
-                </p>
-
-                <p className="mb-4 text-gray-700">
-                  Sed ut perspiciatis unde omnis iste natus error sit sed quia
-                  consequuntur magni voluptatem doloremque.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         <section class="bg-white dark:bg-gray-900 ">
-          <div class="container px-6 py-8 mx-auto">
-            <div class="lg:flex lg:-mx-2 ">
-              <div class="space-y-3 lg:w-1/5 lg:px-2 lg:space-y-4 ">
-                <button
+          <div class=" px-6 py-8 mx-auto border-2">
+              <div class="flex justify-between border-2 lg:w-1/3 lg:px-2 lg:space-y-4  mx-auto">
+                {/* <button
                   href="#"
-                  class="block font-medium text-gray-500 dark:text-gray-300 hover:underline"
+                  class="block font-medium text-gray-500 dark:text-gray-300 mt-4 hover:underline"
                   onClick={showlaplop}
                 >
                   Labtops
-                </button>
+                </button> */}
                 <button
                   href="#"
                   class="block font-medium text-gray-500 dark:text-gray-300 hover:underline"
@@ -347,9 +145,10 @@ const Shop = () => {
                   Jeans
                 </button>
               </div>
+            <div class="lg:flex lg:-mx-2 ">
 
-              <div class="mt-6 lg:mt-0 lg:px-2 lg:w-4/5  ">
-                <div className="grid grid-cols-3 mx-2 p-5 ">
+              <div class="mt-6 lg:mt-0 lg:px-2 lg:w-full  ">
+                <div className="grid grid-cols-4 mx-2 p-5 ">
                   {firedata.map((item) => {
                     return (
                       <div className="w-full p-1 md:p-2 my-12" key={item.id}>
@@ -382,19 +181,9 @@ const Shop = () => {
           </div>
         </section>
 
-        <section class="bg-white dark:bg-gray-900 pb-10">
+        {/* <section class="bg-white   pb-10">
           <div class="mt-6 lg:mt-0 lg:px-2 lg:w-4/5 mx-auto ">
-            <div class="flex items-center justify-between text-sm tracking-widest uppercase ">
-              <p class="text-gray-500 dark:text-gray-300">6 Items</p>
-              <div class="flex items-center">
-                <p class="text-gray-500 dark:text-gray-300">Sort</p>
-                <select class="font-medium text-gray-700 bg-transparent dark:text-gray-500 focus:outline-none">
-                  <option value="#">Recommended</option>
-                  <option value="#">Size</option>
-                  <option value="#">Price</option>
-                </select>
-              </div>
-            </div>
+           
 
             <div class="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               <div class="flex flex-col items-center justify-center w-full max-w-lg mx-auto">
@@ -495,7 +284,7 @@ const Shop = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
        
       </div>
     </>

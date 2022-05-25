@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Router } from 'react-router-dom';
 import logo from '../imgs/logo.PNG'
 
-const Navbar = () => {
+const NavbarAdman = () => {
     const navigate = useNavigate();
   return (
     <>
@@ -25,8 +25,8 @@ const Navbar = () => {
                 </div>
             </div>
             <ul className='flex px-10 mt-3'>
-                {/* <li className='mx-5'>    <button onClick={()=>navigate('/admin')}>Admin</button></li>
-                <li className='mx-5'>    <button onClick={()=>navigate('/login')}>Login</button></li> */}
+                <li className='mx-5'>    <button onClick={()=>navigate('/admin')}>Admin</button></li>
+                {/* <li className='mx-5'>    <button onClick={()=>navigate('/')}>Login</button></li> */}
                 <li className='mx-5'>    <button onClick={()=>navigate('/')}>Logout</button></li>
             </ul>
             
@@ -45,4 +45,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default NavbarAdman

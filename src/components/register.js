@@ -24,7 +24,7 @@ const Register = () => {
       alert("Registration for Admin ")
    
     }
-          console.log(firstName)
+          // console.log(firstName)
               const userfun = ()=>{
                   if(firstName == "admin"){
             

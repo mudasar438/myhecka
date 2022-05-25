@@ -12,16 +12,16 @@ import ShowsMobileData from './showDataUserSide/showMobileData';
 import ShoweClothes from './showDataUserSide/showClothes';
 import ShowJeans from './showDataUserSide/showJeans';
 import ShowsHome from './showDataUserSide/showHome';
-
+import Logout from './components/logout';
 function App() {
   return (
     <>
     <Router>
-    <Navbar />
+    {/* <Navbar /> */}
     
         
     <Routes>
-      <Route path="/home" element={<Home />} />
+      {/* <Route path="/home" element={<Home />} /> */}
       <Route path="/admin" element={<Adman />} />
       <Route path="/" element={<Login />} />
       <Route path="/shop" element={<Shop />} />
@@ -30,6 +30,7 @@ function App() {
       <Route path="/showClothes" element={<ShoweClothes />} />
       <Route path="/showJeans" element={<ShowJeans />} />
       <Route path="/showHome" element={<ShowsHome />} />
+      <Route path="/logout" element={<Logout />} />
       
      
     </Routes>

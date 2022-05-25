@@ -19,6 +19,7 @@ const Home = () => {
     const [price, setPrice]=useState('')
     const [detail, setDetail]=useState('');
     const inputEl = useRef(null);
+    const [pgrs, setPgrs]=useState('')
     const databaseRef = collection(database, "HOME")
 
     const submit =(link)=>{
@@ -66,6 +67,8 @@ const metadata = {
           (snapshot) => {
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              const n = progress.toFixed(1)
+              setPgrs(n)
             
             switch (snapshot.state) {
               case "paused":
@@ -180,6 +183,8 @@ const metadata = {
                                         ref={inputEl}
                                          placeholder="About Product"
 									/>
+                   <progress id="file" value={pgrs} max="100" className='bg-red w-full mt-2'> {pgrs}% </progress>
+                  <p>Uploding is {pgrs} %</p>
 								</div>
                 
                 

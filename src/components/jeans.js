@@ -19,6 +19,7 @@ const Jeans = () => {
     const [price, setPrice]=useState('')
     const [detail, setDetail]=useState('');
     const inputEl = useRef(null);
+    const [pgrs, setPgrs]=useState('')
     const databaseRef = collection(database, "JEANS")
 
     const submit =(link)=>{
@@ -61,11 +62,14 @@ const metadata = {
         setFile(file);
         const storageRef = ref(storage, "jeans/" + file.name);
         const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+      
         uploadTask.on(
           "state_changed",
           (snapshot) => {
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              const n = progress.toFixed(1)
+              setPgrs(n)
             
             switch (snapshot.state) {
               case "paused":
@@ -180,6 +184,9 @@ const metadata = {
                                         ref={inputEl}
                                          placeholder="About Product"
 									/>
+                   <progress id="file" value={pgrs} max="100" className='bg-red w-full mt-2'> {pgrs}% </progress>
+                  <p>Uploding is {pgrs} %</p>
+
 								</div>
                 
                 

@@ -3,515 +3,82 @@ import shoping from '../imgs/b18.jpg'
 import img2 from '../imgs/img2.jpg'
 import img3 from '../imgs/img3.jpg'
 import img4 from '../imgs/img4.jpg'
-import t1 from '../'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+  const Navigate =  useNavigate()
+
+  const shop = ()=>{
+    Navigate('/shop')
+  }
   
         return (
-          <div className="overflow-hidden bg-gray-800">
-            <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-              <div className="flex flex-col items-center justify-between xl:flex-row">
-                <div className="w-full max-w-xl mb-12 xl:pr-16 xl:mb-0 xl:w-7/12">
-                  <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-                  All you need to power your online store. <br className="hidden md:block" />
-                    {' '}
-                    <span className="text-xl">Whether you’re just getting started or are an established brand, </span>
-                  </h2>
-                  <p className="max-w-xl mb-4 text-base text-gray-400 md:text-lg">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque laudan, totam rem aperiam, eaque ipsa quae.
-                  </p>
-                 
+          <>
+          <div classNameName="">
+          <div className="py-16 bg-gray-900">
+    <div  className="container m-auto px-6 space-y-8 text-gray-500 md:px-12 lg:px-20">
+        <div className="justify-center text-center gap-6 md:text-left md:flex lg:items-center  lg:gap-16">
+            <div className="order-last mb-6 space-y-6 md:mb-0 md:w-6/12 lg:w-6/12">
+                <h1 className="text-2xl text-gray-700 font-bold md:text-3xl">Buy now and benefit up to <span className="text-blue-500">30% off</span></h1>
+                <p className="text-lg">Be part of millions people around the world using tailus in modern User Interfaces.</p>
+                <div className="flex flex-row-reverse flex-wrap justify-center gap-4 md:gap-6 md:justify-end">
+                    <button type="button" onClick={shop} title="Start buying" className="w-full py-3 px-6 text-center rounded-xl transition bg-gray-700 shadow-xl hover:bg-gray-600 active:bg-gray-700 focus:bg-gray-600 sm:w-max">
+                        <span className="block text-white font-semibold">
+                            Start buying
+                        </span>
+                    </button>
+                    <button type="button" title="more about" className="w-full order-first py-3 px-6 text-center rounded-xl bg-gray-100 transition hover:bg-gray-200 active:bg-gray-300 focus:bg-gray-200 sm:w-max">
+                        <span className="block text-gray-600 font-semibold">
+                            More about
+                        </span>
+                    </button>
                 </div>
-                <div className=" opacity-">
-                    <img src={shoping} alt="" width={1000} />
-                </div>
-                
-              </div>
-            </div>\
-           
-  
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-      <div className="grid gap-5 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-          <a href="/" aria-label="Article">
-            <img
-              src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
-              className="object-cover w-full h-64 rounded"
-              alt=""
-            />
-          </a>
-          <div className="py-5">
-            <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-              13 Jul 2020
-            </p>
-            <a
-              href="/"
-              aria-label="Article"
-              className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              <p className="text-2xl font-bold leading-5">Diving to the deep</p>
-            </a>
-            <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="/"
-                aria-label="Likes"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="6 23 1 23 1 12 6 12"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M6,12,9,1H9a3,3,0,0,1,3,3v6h7.5a3,3,0,0,1,2.965,3.456l-1.077,7A3,3,0,0,1,18.426,23H6Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">7.4K</p>
-              </a>
-              <a
-                href="/"
-                aria-label="Comments"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="23 5 23 18 19 18 19 22 13 18 12 18"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <polygon
-                      points="19 2 1 2 1 14 5 14 5 19 12 14 19 14 19 2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">81</p>
-              </a>
             </div>
-          </div>
-        </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-          <a href="/" aria-label="Article">
-            <img
-              src="https://images.pexels.com/photos/1576937/pexels-photo-1576937.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500"
-              className="object-cover w-full h-64 rounded"
-              alt=""
-            />
-          </a>
-          <div className="py-5">
-            <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-              4 Nov 2020
-            </p>
-            <a
-              href="/"
-              aria-label="Article"
-              className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              <p className="text-2xl font-bold leading-5">Conquer the World</p>
-            </a>
-            <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="/"
-                aria-label="Likes"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="6 23 1 23 1 12 6 12"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M6,12,9,1H9a3,3,0,0,1,3,3v6h7.5a3,3,0,0,1,2.965,3.456l-1.077,7A3,3,0,0,1,18.426,23H6Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
+            <div className="grid grid-cols-5 grid-rows-4 gap-4 md:w-5/12 lg:w-6/12">
+                {/* <div className="col-span-2 row-span-4">
+                    <img src="https://tailus.io/sources/blocks/ecommerce-site/preview/images/products/kushagra.webp" className="rounded" width="640" height="960" alt="shoes" loading="lazy"/>
+                  
+                </div> */}
+                {/* <div className="col-span-2 row-span-2">
+                    <img  src= className="w-full h-full object-cover object-top rounded-xl" width="640" height="640" alt="shoe" loading="lazy"/>
+                </div> */}
+                <div className="col-span-5 row-span-5">
+                    <img  src={shoping}className="w-full h-full object-cover object-top rounded-xl" width="640" height="427" alt="shoes" loading="lazy"/>
                 </div>
-                <p className="font-semibold">7.4K</p>
-              </a>
-              <a
-                href="/"
-                aria-label="Comments"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="23 5 23 18 19 18 19 22 13 18 12 18"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <polygon
-                      points="19 2 1 2 1 14 5 14 5 19 12 14 19 14 19 2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">81</p>
-              </a>
             </div>
-          </div>
         </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-          <a href="/" aria-label="Article">
-            <img
-              src={img2}
-              className="object-cover w-full h-64 rounded"
-              alt=""
-            />
-          </a>
-          <div className="py-5">
-            <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-              4 Nov 2020
-            </p>
-            <a
-              href="/"
-              aria-label="Article"
-              className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              <p className="text-2xl font-bold leading-5">Conquer the World</p>
-            </a>
-            <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="/"
-                aria-label="Likes"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="6 23 1 23 1 12 6 12"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M6,12,9,1H9a3,3,0,0,1,3,3v6h7.5a3,3,0,0,1,2.965,3.456l-1.077,7A3,3,0,0,1,18.426,23H6Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">7.4K</p>
-              </a>
-              <a
-                href="/"
-                aria-label="Comments"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="23 5 23 18 19 18 19 22 13 18 12 18"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <polygon
-                      points="19 2 1 2 1 14 5 14 5 19 12 14 19 14 19 2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">81</p>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-          <a href="/" aria-label="Article">
-            <img
-              src={img3}
-              className="object-cover w-full h-64 rounded"
-              alt=""
-            />
-          </a>
-          <div className="py-5">
-            <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-              4 Nov 2020
-            </p>
-            <a
-              href="/"
-              aria-label="Article"
-              className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              <p className="text-2xl font-bold leading-5">Conquer the World</p>
-            </a>
-            <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="/"
-                aria-label="Likes"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="6 23 1 23 1 12 6 12"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M6,12,9,1H9a3,3,0,0,1,3,3v6h7.5a3,3,0,0,1,2.965,3.456l-1.077,7A3,3,0,0,1,18.426,23H6Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">7.4K</p>
-              </a>
-              <a
-                href="/"
-                aria-label="Comments"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="23 5 23 18 19 18 19 22 13 18 12 18"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <polygon
-                      points="19 2 1 2 1 14 5 14 5 19 12 14 19 14 19 2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">81</p>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-          <a href="/" aria-label="Article">
-            <img
-              src={img4}
-              className="object-cover w-full h-64 rounded"
-              alt=""
-            />
-          </a>
-          <div className="py-5">
-            <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-              4 Nov 2020
-            </p>
-            <a
-              href="/"
-              aria-label="Article"
-              className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-            >
-              <p className="text-2xl font-bold leading-5">Conquer the World</p>
-            </a>
-            <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="/"
-                aria-label="Likes"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="6 23 1 23 1 12 6 12"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M6,12,9,1H9a3,3,0,0,1,3,3v6h7.5a3,3,0,0,1,2.965,3.456l-1.077,7A3,3,0,0,1,18.426,23H6Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">7.4K</p>
-              </a>
-              <a
-                href="/"
-                aria-label="Comments"
-                className="flex items-start text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700 group"
-              >
-                <div className="mr-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5 text-gray-600 transition-colors duration-200 group-hover:text-deep-purple-accent-700"
-                  >
-                    <polyline
-                      points="23 5 23 18 19 18 19 22 13 18 12 18"
-                      fill="none"
-                      strokeMiterlimit="10"
-                    />
-                    <polygon
-                      points="19 2 1 2 1 14 5 14 5 19 12 14 19 14 19 2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </div>
-                <p className="font-semibold">81</p>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
-          <a href="/" aria-label="Article">
-            <img
-              src={shoping}
-              className="object-cover w-full h-64 rounded"
-              alt=""
-            />
-          </a>
-          <div className="py-5">
-            <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-              28 Dec 2020
-            </p>
-          
-            <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
-            </p>
-         
-          </div>
-        </div>
-      </div>
     </div>
+</div>
+<div className="grid grid-cols-4 mx-2 p-5">
+<div className="flex flex-col items-center justify-center max-w-sm mx-auto">
+        <div className=' m-4' ><img src={shoping} alt="" srcset="" className='rounded-lg' /></div>
 
+        <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-44 dark:bg-gray-800">
+            <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">Nike Revolt</h3>
+            
+            <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
+                <span className="font-bold text-gray-800 dark:text-gray-200">$129</span>
+                <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
+        <div className='rounded-lg m-4' ><img src={shoping} alt="" srcset="" /></div>
+
+        <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
+            <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">Nike Revolt</h3>
+            
+            <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
+                <span className="font-bold text-gray-800 dark:text-gray-200">$129</span>
+                <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    
+    </div>
           </div>
+    
+          </>
         );
    
 }

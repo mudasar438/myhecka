@@ -76,6 +76,12 @@ const Shop = () => {
   const gotoMobile =()=>{
     Navigate('/showMobileData')
   }
+  const gotoClothes = ()=>{
+    Navigate('/showClothes')
+  }
+  const gotoJeans = ()=>{
+    Navigate('/showJeans')
+  }
   
 
   return (
@@ -328,12 +334,14 @@ const Shop = () => {
                 </button>
                 <button
                   href="#"
+                  onClick={gotoClothes}
                   class="block font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Clothes
                 </button>
                 <button
                   href="#"
+                  onClick={gotoJeans}
                   class="block font-medium text-gray-500 dark:text-gray-300 hover:underline"
                 >
                   Jeans

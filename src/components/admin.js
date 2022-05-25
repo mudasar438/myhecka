@@ -15,6 +15,8 @@ import { useState } from 'react'
 import { setPersistence } from 'firebase/auth'
 import { useRef } from 'react'
 import { async } from '@firebase/util';
+import Clothes from './clothes';
+import Jeans from './jeans';
 
 const Adman = () => {
   
@@ -219,8 +221,8 @@ const uplode = (e) => {
 			
       <div className="w-full  flex  justify-between wrap ">
       
-      <Mobile />
-      <Mobile />
+    <Clothes />
+      <Jeans />
         
        
         

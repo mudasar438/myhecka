@@ -21,15 +21,15 @@ import {
       onSnapshot,
     } from "firebase/firestore";
     
-    const ShowsMobileData = () => {
-    const mobileDatabaseRef = collection(database, "MOBILE");
+    const ShoweClothes = () => {
+    const mobileDatabaseRef = collection(database, "CLOTHES");
 
     const [mobileDesplay, setMobileDisplay] = useState([]);
   const [showMobileData, setShowMobileData] = useState([]);
   const storage = getStorage();
   const showMobile = () => {
     console.log("You are Click on Mobile Section");
-    const forestRef = ref(storage, "Mobile");
+    const forestRef = ref(storage, "Clothes");
 
     listAll(forestRef)
       .then((res) => {
@@ -105,4 +105,4 @@ import {
   )
 }
 
-export default ShowsMobileData
+export default ShoweClothes;

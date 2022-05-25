@@ -9,6 +9,8 @@ import Login from './components/login';
 import Shop from './components/shop';
 import Register from './components/register';
 import ShowsMobileData from './showDataUserSide/showMobileData';
+import ShoweClothes from './showDataUserSide/showClothes';
+import ShowJeans from './showDataUserSide/showJeans';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
       <Route path="/shop" element={<Shop />} />
       <Route path="/register" element={<Register />} />
       <Route path="/showMobileData" element={<ShowsMobileData />} />
+      <Route path="/showClothes" element={<ShoweClothes />} />
+      <Route path="/showJeans" element={<ShowJeans />} />
       
      
     </Routes>

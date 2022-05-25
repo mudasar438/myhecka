@@ -1,86 +1,206 @@
 import React from 'react'
-import shoping from '../imgs/b18.jpg'
-import img2 from '../imgs/img2.jpg'
-import img3 from '../imgs/img3.jpg'
-import img4 from '../imgs/img4.jpg'
-import { useNavigate } from 'react-router-dom'
+import { useState , useRef} from 'react'
+import {app,database} from '../firebase/fireconfig'
+import "firebase/storage";
+import { collection ,  addDoc, getDocs, doc ,updateDoc, deleteDoc} from 'firebase/firestore'
+import {
+    getStorage,
+    ref,
+    uploadBytesResumable,
+    getDownloadURL,
+    getMetadata,
+    listAll,
+  } from "firebase/storage";
+
 
 const Home = () => {
-  const Navigate =  useNavigate()
+    const [model, setModel]=useState('')
+    const [size, setSize]=useState('');
+    const [price, setPrice]=useState('')
+    const [detail, setDetail]=useState('');
+    const inputEl = useRef(null);
+    const databaseRef = collection(database, "HOME")
 
-  const shop = ()=>{
-    Navigate('/shop')
-  }
-  
-        return (
-          <>
-          <div classNameName="">
-          <div className="py-16 bg-gray-900">
-    <div  className="container m-auto px-6 space-y-8 text-gray-500 md:px-12 lg:px-20">
-        <div className="justify-center text-center gap-6 md:text-left md:flex lg:items-center  lg:gap-16">
-            <div className="order-last mb-6 space-y-6 md:mb-0 md:w-6/12 lg:w-6/12">
-                <h1 className="text-2xl text-gray-700 font-bold md:text-3xl">Buy now and benefit up to <span className="text-blue-500">30% off</span></h1>
-                <p className="text-lg">Be part of millions people around the world using tailus in modern User Interfaces.</p>
-                <div className="flex flex-row-reverse flex-wrap justify-center gap-4 md:gap-6 md:justify-end">
-                    <button type="button" onClick={shop} title="Start buying" className="w-full py-3 px-6 text-center rounded-xl transition bg-gray-700 shadow-xl hover:bg-gray-600 active:bg-gray-700 focus:bg-gray-600 sm:w-max">
-                        <span className="block text-white font-semibold">
-                            Start buying
-                        </span>
-                    </button>
-                    <button type="button" title="more about" className="w-full order-first py-3 px-6 text-center rounded-xl bg-gray-100 transition hover:bg-gray-200 active:bg-gray-300 focus:bg-gray-200 sm:w-max">
-                        <span className="block text-gray-600 font-semibold">
-                            More about
-                        </span>
-                    </button>
-                </div>
-            </div>
-            <div className="grid grid-cols-5 grid-rows-4 gap-4 md:w-5/12 lg:w-6/12">
-                {/* <div className="col-span-2 row-span-4">
-                    <img src="https://tailus.io/sources/blocks/ecommerce-site/preview/images/products/kushagra.webp" className="rounded" width="640" height="960" alt="shoes" loading="lazy"/>
-                  
-                </div> */}
-                {/* <div className="col-span-2 row-span-2">
-                    <img  src= className="w-full h-full object-cover object-top rounded-xl" width="640" height="640" alt="shoe" loading="lazy"/>
-                </div> */}
-                <div className="col-span-5 row-span-5">
-                    <img  src={shoping}className="w-full h-full object-cover object-top rounded-xl" width="640" height="427" alt="shoes" loading="lazy"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div className="grid grid-cols-4 mx-2 p-5">
-<div className="flex flex-col items-center justify-center max-w-sm mx-auto">
-        <div className=' m-4' ><img src={shoping} alt="" srcset="" className='rounded-lg' /></div>
-
-        <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-44 dark:bg-gray-800">
-            <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">Nike Revolt</h3>
-            
-            <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
-                <span className="font-bold text-gray-800 dark:text-gray-200">$129</span>
-                <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">Add to cart</button>
-            </div>
-        </div>
-    </div>
-    <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
-        <div className='rounded-lg m-4' ><img src={shoping} alt="" srcset="" /></div>
-
-        <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
-            <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">Nike Revolt</h3>
-            
-            <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
-                <span className="font-bold text-gray-800 dark:text-gray-200">$129</span>
-                <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">Add to cart</button>
-            </div>
-        </div>
-    </div>
+    const submit =(link)=>{
     
-    </div>
-          </div>
-    
-          </>
+        addDoc(databaseRef, {
+            model:model,
+            size:size,
+            price:price,
+            detail:detail,
+            image:link
+        
+          })
+         
+          .then(()=>{
+            alert("Data add Into Firestore Database/Storage")
+            // getData()
+           
+           
+          })
+          .catch((err)=>{
+            console.error(err.message)
+          })
+        
+
+
+    }
+    // uploding image on firestore and link of this image provide to the database where all doc uplode like model price size 
+    const [file, setFile] = useState(null);
+const storage = getStorage();
+const metadata = {
+  contentType: "image/jpeg",
+};
+    const uplodeimg =(e)=>{
+        e.preventDefault()
+        console.log("You are click on upldoe buttotn")
+     
+
+
+        var file = inputEl.current.files[0];
+        setFile(file);
+        const storageRef = ref(storage, "Home/" + file.name);
+        const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            
+            switch (snapshot.state) {
+              case "paused":
+                console.log("Upload is paused");
+                break;
+              case "running":
+                console.log("Upload is running");
+                break;
+               
+            }
+          },
+          (error) => {
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storage/web/handle-errors
+            switch (error.code) {
+              case 'storage/unauthorized':
+              break;
+              case 'storage/canceled':
+                break;
+              case 'storage/unknown':
+               break;
+            }
+          }, 
+           () => {
+         
+            getDownloadURL(uploadTask.snapshot.ref).then ((downloadURL) =>{
+              submit(downloadURL)
+              console.log('File available at which is uplode i', downloadURL);
+            });
+          }
         );
+    }
+
+
+
+    
+  return (
+   <> 
+ 
+
    
+
+
+     <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border border-red mx-5">
+						<h3 className="pt-4 text-2xl text-center">New Products</h3>
+						<form className="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={submit}>
+							<div className="mb-4 md:flex md:justify-between">
+								<div className="mb-4 md:mr-2 md:mb-0">
+									<label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
+								Model
+									</label>
+									<input
+										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+								
+                                        value={model}
+										type="text"
+                                         name='name'
+                                         onChange={(e)=>setModel(e.target.value)}
+
+										placeholder="Designe"
+									/>
+								</div>
+								<div className="md:ml-2">
+									<label className="block mb-2 text-sm font-bold text-gray-700" for="lastName">
+									Size
+									</label>
+									<input
+										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+									
+										type="text"
+										placeholder="XL , XXL"
+                                        value={size}
+                                        onChange={(e)=>setSize(e.target.value)}
+									/>
+								</div>
+							</div>
+							<div className="mb-4">
+								<label className="block mb-2 text-sm font-bold text-gray-700" for="email">
+								price
+								</label>
+								<input
+									className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+							
+									type="text"
+									placeholder="69 $"
+                                    value={price}
+                                    onChange={(e)=>setPrice(e.target.value)}
+								/>
+							</div>
+              <div className="mb-4 md:mr-2 md:mb-0">
+									<label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
+								Detail
+									</label>
+									<input
+										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+								
+										type="text"
+										placeholder="About Product"
+                                        value={detail}
+                                        onChange={(e)=>setDetail(e.target.value)}
+									/>
+								</div>
+
+                <div className="mb-4 md:mr-2 md:mb-0">
+									<label className="block mb-2 text-sm font-bold text-gray-700" for="firstName">
+						Uploding Image
+									</label>
+									<input 
+										className="w-full px-3  mt-5 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+								
+                                        type="file"
+                                        ref={inputEl}
+                                         placeholder="About Product"
+									/>
+								</div>
+                
+                
+						
+							<div className="mb-6 text-center">
+								<button
+									className="w-full mt-5 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+									type="submit"
+                                    onClick={uplodeimg}
+								>
+									Uplode
+								</button>
+							</div>
+							<hr className="mb-6 border-t" />
+							
+							
+						</form>
+					</div>
+         
+   </>
+    )
 }
 
 export default Home

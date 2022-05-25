@@ -17,6 +17,7 @@ import { useRef } from 'react'
 import { async } from '@firebase/util';
 import Clothes from './clothes';
 import Jeans from './jeans';
+import Home from '../components/home'
 
 const Adman = () => {
   
@@ -223,6 +224,14 @@ const uplode = (e) => {
       
     <Clothes />
       <Jeans />
+        
+       
+        
+       
+      </div>
+      <div className="w-full  flex  justify-between wrap ">
+      
+    <Home />
         
        
         

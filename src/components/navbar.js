@@ -18,7 +18,7 @@ const Navbar = () => {
 
                 <ul className='flex'>
                     
-                        <li className='mx-5'> <button onClick={()=>navigate('/home')}>Home</button></li>
+                        <li className='mx-5'> <button onClick={()=>navigate('/showHome')}>Home</button></li>
                         <li className='mx-5'> <button onClick={()=>navigate('/shop')}>Shop</button></li>
                  
                     </ul>

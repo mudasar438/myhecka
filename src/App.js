@@ -11,6 +11,7 @@ import Register from './components/register';
 import ShowsMobileData from './showDataUserSide/showMobileData';
 import ShoweClothes from './showDataUserSide/showClothes';
 import ShowJeans from './showDataUserSide/showJeans';
+import ShowsHome from './showDataUserSide/showHome';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="/showMobileData" element={<ShowsMobileData />} />
       <Route path="/showClothes" element={<ShoweClothes />} />
       <Route path="/showJeans" element={<ShowJeans />} />
+      <Route path="/showHome" element={<ShowsHome />} />
       
      
     </Routes>

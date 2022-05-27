@@ -122,7 +122,7 @@ const uplode = (e) => {
 				
 					
 					
-					<div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border border-red mx-5">
+					<div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border border-red mx-5 mb-5">
 						<h3 className="pt-4 text-2xl text-center">Laptops</h3>
 						<form className="px-8 pt-6 pb-8 mb-4 bg-white rounded"   onSubmit={getData}>
 							<div className="mb-4 md:flex md:justify-between">

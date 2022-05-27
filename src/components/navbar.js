@@ -18,7 +18,7 @@ const Navbar = () => {
     <div className="w-full bodycolor">
         <div className="w-full flex flex-col md:flex-row  justify-between p-4 bgcolor text-white">
             <div className=" flex flex-col md:flex-row px-10 md:w-[40%] w-full text-center justify-center   md:justify-between">
-                <div className="flex justify-between border-2 ">
+                <div className="flex justify-between  ">
                     <div className="">
 
                 <h2 className='text-3xl'>Capital <span className='text-xl'>shop</span></h2>
@@ -31,7 +31,7 @@ const Navbar = () => {
                 </div>
                 <div className=" mt-3  ">
 
-                <ul className={`${icon? 'flex':'hidden'} flex  flex-col md:flex-row justify-center `}>
+                <ul className={`${icon? 'flex':'hidden'} md:flex  flex-col md:flex-row justify-center `}>
                     
                         <li className='mx-5'> <button onClick={()=>navigate('/showHome')}>Home</button></li>
                         <li className='mx-5'> <button onClick={()=>navigate('/shop')}>Shop</button></li>

@@ -113,7 +113,7 @@ const metadata = {
    
 
 
-     <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border border-red mx-5">
+     <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none border border-red mx-5 mb-10">
 						<h3 className="pt-4 text-2xl text-center">Jeans</h3>
 						<form className="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={submit}>
 							<div className="mb-4 md:flex md:justify-between">

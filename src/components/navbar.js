@@ -1,22 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Router } from 'react-router-dom';
 import logo from '../imgs/logo.PNG'
+ 
+import {GiHamburgerMenu} from 'react-icons/gi'
 
 const Navbar = () => {
+    const [icon, setIcon]=useState(false)
+    const showMenue =()=>{
+        console.log("You are clicking on Menue Button")
+
+        setIcon(icon =>icon ? false : true)
+    }
     const navigate = useNavigate();
   return (
     <>
-    <div className="w-screen bodycolor">
-        <div className="w-full flex justify-between p-4 bgcolor text-white">
-            <div className=" flex px-10 w-[40%]  justify-between">
-                <div className="flex ">
+    <div className="w-full bodycolor">
+        <div className="w-full flex flex-col md:flex-row  justify-between p-4 bgcolor text-white">
+            <div className=" flex flex-col md:flex-row px-10 md:w-[40%] w-full text-center justify-center   md:justify-between">
+                <div className="flex justify-between border-2 ">
+                    <div className="">
 
                 <h2 className='text-3xl'>Capital <span className='text-xl'>shop</span></h2>
-                </div>
-                <div className="mt-3  ">
+                    </div>
+                    <div className="mt-3">
 
-                <ul className='flex'>
+                <GiHamburgerMenu  className='md:hidden ' onClick={()=>showMenue()}/>
+                    </div>
+
+                </div>
+                <div className=" mt-3  ">
+
+                <ul className={`${icon? 'flex':'hidden'} flex  flex-col md:flex-row justify-center `}>
                     
                         <li className='mx-5'> <button onClick={()=>navigate('/showHome')}>Home</button></li>
                         <li className='mx-5'> <button onClick={()=>navigate('/shop')}>Shop</button></li>
@@ -24,7 +39,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <ul className='flex px-10 mt-3'>
+            <ul className='flex flex-col md:flex-row text-center   px-10 mt-3'>
                 {/* <li className='mx-5'>    <button onClick={()=>navigate('/admin')}>Admin</button></li>
                 <li className='mx-5'>    <button onClick={()=>navigate('/login')}>Login</button></li> */}
                 <li className='mx-5'>    <button onClick={()=>navigate('/')}>Logout</button></li>

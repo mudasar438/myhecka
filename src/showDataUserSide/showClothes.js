@@ -114,7 +114,7 @@ import {
                 </button>
               </div>
       
-  <div className="grid grid-cols-4 mx-2 p-5 ">
+  <div className="grid grid-cols-1 md:grid-cols-4 mx-2 p-5 ">
                 {showMobileData.map((item) => {
                   return (
                     <div className="w-full p-1 md:p-2 my-12" key={item.id}>

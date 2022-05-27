@@ -118,7 +118,7 @@ const uplode = (e) => {
     <div className="container mx-auto ">
 			<div className=" px-6 my-12  ">
 			
-				<div className="w-full  flex  justify-between wrap ">
+				<div className="w-full  flex flex-col md:flex-row  justify-between wrap ">
 				
 					
 					
@@ -227,7 +227,7 @@ const uplode = (e) => {
 			</div>
       <div className=" px-6 my-12  ">
 			
-      <div className="w-full  flex  justify-between wrap ">
+      <div className="w-full  flex  flex-col md:flex-row mb-10 justify-between wrap ">
       
     <Clothes />
       <Jeans />

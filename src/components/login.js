@@ -95,10 +95,10 @@ const Login = () => {
   return (
     <>
     <div className=' bg-black'>
-        <div className="w-[35%] mx-auto text-white font-sans font-bold bg-black min-h-screen pl-7">
-            <div className=" min-h-screen items-center justify-items-start">
+        <div className="w-full md:w-[35%]  mx-auto text-white font-sans font-bold bg-black min-h-screen  md:pl-7">
+            <div className=" min-h-screen items-center  ml-10 pt-5 justify-items-start">
                 <div className=" row-start-2 text-4xl">
-                    Sign In      
+                   <p className=''>Sign in</p>    
                     <form action="" onSubmit={handleLogin}>             
                     <div className="pt-10 pr-20">                        
                         <label className="text-sm font-sans font-medium">

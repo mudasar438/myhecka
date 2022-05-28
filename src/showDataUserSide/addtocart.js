@@ -53,7 +53,7 @@ function Addtocart() {
                             <div className="flex md:flex-row flex-col justify-end" id="cart">
                                 <div className=" w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 py-8 bg-white overflow-y-auto overflow-x-hidden h-screen" id="scroll">
                                
-                                    <p className="text-5xl font-black leading-10 text-gray-800 pt-3">Bag</p>
+                                    <p className="text-5xl font-black leading-10 text-gray-800 pt-3">Your Products</p>
                                     <div className="grid grid-cols-1  p-5 ">
                                         {show.map((item)=>{
                                            return(
@@ -76,8 +76,8 @@ function Addtocart() {
                                                 <p className="w-96 text-xs leading-3 text-gray-600">Composition: 100% calf leather</p>
                                                 <div className="flex items-center justify-between pt-5 pr-6">
                                                     <div className="flex itemms-center">
-                                                        <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
-                                                        <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                                                        {/* <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p> */}
+                                                        {/* <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p> */}
                                                     </div>
                                                     <p className="text-base font-black leading-none text-gray-800">{item.price}</p>
                                                    

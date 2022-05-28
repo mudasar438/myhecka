@@ -1,5 +1,5 @@
 import Navbar from '../components/navbar'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { app, database } from "../firebase/fireconfig";
 import { useState } from 'react';
 import shoping from '../imgs/b18.jpg'
@@ -70,11 +70,29 @@ import { useNavigate } from 'react-router-dom';
   };
   // console.log(mobileDesplay)
   // console.log(showMobileData);
-  showMobile();
+  useEffect(()=>{
+
+    showMobile();
+  }, [1])
+  
+
+  console.log(showMobileData , "All DData")
+ 
+  
 
   const shop = ()=>{
       Navigate('/shop')
       console.log("You are Click on Shop button")
+  }
+
+  const findid = (items)=>{
+   const picid =  items.id
+   const price = items.price
+   const detail = items.detail
+   const size = items.size
+   console.log(picid,price,detail,size)
+  
+
   }
   return (
   <>
@@ -139,7 +157,7 @@ import { useNavigate } from 'react-router-dom';
                           <p className="text-blue-500">{item.size}</p>
                           <p className="text-blue-500">{item.detail}</p>
                           <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                            <span class="mx-1">Add to cart</span>
+                            <span class="mx-1" onClick={()=>findid(item)}>Add to cart</span>
                           </button>
                         </li>
                       </ul>

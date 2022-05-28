@@ -85,7 +85,7 @@ const Register = () => {
   return (
     <>
        <div className=' bg-black'>
-        <div className="w-full pt-5 ml-5 md:w-[35%] mx-auto text-white font-sans font-bold bg-black min-h-screen pl-7">
+        <div className="w-full pt-5 ml-5 md:w-[35%] md:mx-auto text-white font-sans font-bold bg-black min-h-screen pl-7 pb-5">
             <div className=" min-h-screen items-center justify-items-start">
                 <div className=" row-start-2 text-4xl">
                   Register  

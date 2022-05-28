@@ -54,15 +54,7 @@ const Login = () => {
     
   })
 
-    // if(user.role==="user"){
-    //   navigate('/home')
-      
-    //   alert("You are login")
-    // }
-    // else if(user.rol==="admin"){
-    //   navigate('/admin')
-    // }
-    // ...
+ 
   })
   .catch((error) => {
     const errorCode = error.code;

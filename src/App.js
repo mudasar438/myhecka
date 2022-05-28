@@ -13,6 +13,8 @@ import ShoweClothes from './showDataUserSide/showClothes';
 import ShowJeans from './showDataUserSide/showJeans';
 import ShowsHome from './showDataUserSide/showHome';
 import Logout from './components/logout';
+
+import Addtocart from './showDataUserSide/addtocart'
 function App() {
   return (
     <>
@@ -31,6 +33,8 @@ function App() {
       <Route path="/showJeans" element={<ShowJeans />} />
       <Route path="/showHome" element={<ShowsHome />} />
       <Route path="/logout" element={<Logout />} />
+      <Route path="/addtocart" element={<Addtocart />} />
+    
       
      
     </Routes>

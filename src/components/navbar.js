@@ -35,6 +35,7 @@ const Navbar = () => {
                     
                         <li className='mx-5'> <button onClick={()=>navigate('/showHome')}>Home</button></li>
                         <li className='mx-5'> <button onClick={()=>navigate('/shop')}>Shop</button></li>
+                        <li className='mx-5'> <button onClick={()=>navigate('/addtocart')}>Cart</button></li>
                  
                     </ul>
                 </div>

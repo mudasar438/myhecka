@@ -22,7 +22,9 @@ import {
       deleteDoc,
       onSnapshot,
     } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom';
+    import { useNavigate } from 'react-router-dom';
+    export const  addtocartArray = [
+      ];
     
     const ShowsHome = () => {
       const Navigate = useNavigate()
@@ -85,14 +87,29 @@ import { useNavigate } from 'react-router-dom';
       console.log("You are Click on Shop button")
   }
 
-  const findid = (items)=>{
-   const picid =  items.id
-   const price = items.price
-   const detail = items.detail
-   const size = items.size
-   console.log(picid,price,detail,size)
-  
+  // add cart data into firebae 
+  const cartdatabase = collection(database, "CART DATA")
 
+  const findid = (items)=>{
+    addDoc(cartdatabase, {
+      price:items.price,
+      size:items.size,
+      model:items.model,
+      detail:items.detail,
+      image:items.image
+      
+  
+    })
+   
+    .then(()=>{
+      alert("Product add in to cart")
+    
+     
+     
+    })
+    .catch((err)=>{
+      console.error(err.message)
+    })
   }
   return (
   <>
@@ -118,13 +135,7 @@ import { useNavigate } from 'react-router-dom';
       </div>
   </div>
   <div className="grid grid-cols-5 grid-rows-4 gap-4 md:w-5/12 lg:w-6/12">
-      {/* <div className="col-span-2 row-span-4">
-          <img src="https://tailus.io/sources/blocks/ecommerce-site/preview/images/products/kushagra.webp" className="rounded" width="640" height="960" alt="shoes" loading="lazy"/>
-        
-      </div> */}
-      {/* <div className="col-span-2 row-span-2">
-          <img  src= className="w-full h-full object-cover object-top rounded-xl" width="640" height="640" alt="shoe" loading="lazy"/>
-      </div> */}
+      
       <div className="col-span-5 row-span-5">
           <img  src={shoping}className="w-full h-full object-cover object-top rounded-xl" width="640" height="427" alt="shoes" loading="lazy"/>
       </div>

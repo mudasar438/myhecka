@@ -11,6 +11,7 @@ import {
     deleteDoc,
     onSnapshot,
   } from "firebase/firestore";
+import { connectStorageEmulator } from "firebase/storage";
 
 function Addtocart() {
     const [show, setShow] = useState([]);
@@ -22,6 +23,13 @@ function Addtocart() {
         await getDocs(mobileDatabaseRef).then((response) => {
           setShow(
             response.docs.map((item) => {
+              
+                // console.log(item.data().price)
+            
+           
+                
+            
+              
                 
               // console.log(item.data(), item.id)
               return { ...item.data(), id: item.id };
@@ -32,16 +40,24 @@ function Addtocart() {
           );
         });
       };
+
+
+
       useEffect(() => {
         
       
         getcardData()
        
       }, [])
-      const cartPriceadd =0;
+      const checkout =()=>{
+       
+
+      };
       
 // console.log(show , "data from CArt DAta")
 // console.log(total)
+// const newprice = 0;
+// newprice =  newprice + item.price
 
     return (
         <>
@@ -54,11 +70,11 @@ function Addtocart() {
                                 <div className=" w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 py-8 bg-white overflow-y-auto overflow-x-hidden h-screen" id="scroll">
                                
                                     <p className="text-5xl font-black leading-10 text-gray-800 pt-3">Your Products</p>
-                                    <div className="grid grid-cols-1  p-5 ">
+                                    <div className="grid grid-cols-1 p-5 ">
                                         {show.map((item)=>{
                                            return(
-                                            <div key={item.id} className="md:flex items-center mt-14 py-8 border-t border-gray-200 border-2">
-                                            <div className="w-1/4 bg-black border-2">
+                                            <div key={item.id} className="md:flex items-center mt-14 py-8 border-t border-gray-200 border-2 ">
+                                            <div className="w-1/4 bg-black border-2 ml-5">
                                                 <img src={item.image} alt className="w-full h-full object-center object-cover" />
                                             </div>
                                             <div className="md:pl-3 md:w-3/4">
@@ -66,6 +82,8 @@ function Addtocart() {
                                                 <div className="flex items-center justify-between w-full pt-1">
                                                     <p className="text-base font-black leading-none text-gray-800">{item.price}</p>
                                                     <select className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none">
+
+                                                       
                                                         <option>01</option>
                                                         <option>02</option>
                                                         <option>03</option>
@@ -115,7 +133,7 @@ function Addtocart() {
                                                 <p className="text-2xl leading-normal text-gray-800">Total</p>
                                                 <p className="text-2xl font-bold leading-normal text-right text-gray-800">55</p>
                                             </div>
-                                            <button  className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
+                                            <button  className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white" onClick={checkout}>
                                                 Checkout
                                             </button>
                                         </div>

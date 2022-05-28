@@ -148,12 +148,12 @@ import {
 </div>
 
       
-  <div className="grid grid-cols-1 md:grid-cols-4  p-5  ">
+  <div className="grid grid-cols-1 md:grid-cols-4  p-5  mb-12">
                 {showMobileData.map((item) => {
                   return (
-                    <div className="w-full p-1 md:p-2 my-12 " key={item.id}>
+                    <div className="w-full  p-1 md:p-2 my-12 " key={item.id}>
                       <ul className="bg-white rounded-xl">
-                        <li>
+                        <li className=' h-[150px] mb-12 mt-12'>
                           <img
                             src={item.image}
                             alt=""

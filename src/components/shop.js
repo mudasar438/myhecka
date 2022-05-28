@@ -147,13 +147,13 @@ const Shop = () => {
               </div>
             <div class="lg:flex lg:-mx-2 ">
 
-              <div class="mt-6 lg:mt-0 lg:px-2 lg:w-full  ">
-                <div className="grid grid-cols-1 md:grid-cols-4 mx-2 p-5 ">
+              <div class="mt-6 lg:mt-0 lg:px-2 lg:w-full mb-12 ">
+                <div className="grid grid-cols-1 md:grid-cols-4 mx-2 my-10 p-5 ">
                   {firedata.map((item) => {
                     return (
                       <div className="w-full p-1 md:p-2 my-12" key={item.id}>
                         <ul className="">
-                          <li>
+                          <li className="h-[150px] my-12">
                             <img
                               src={item.image}
                               alt=""
